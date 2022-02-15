@@ -52,6 +52,15 @@ const App = () => {
     });
   };
 
+  const onCancelOrder = () => {
+    setOrderProducts([]);
+    setSum(0);
+  };
+
+  const onSaveOrder = (orderData) => {
+    console.log(orderData);
+  };
+
   return (
     <>
       <Navbar bg="dark" variant="dark" className="mb-4">
@@ -81,7 +90,13 @@ const App = () => {
 
           <Col md={4} className="pt-4 pt-md-1 ps-md-4">
             <h3 className="mb-3">Order detail</h3>
-            <OrderDetail customers={customers} sellers={sellers} sum={sum} />
+            <OrderDetail
+              customers={customers}
+              sellers={sellers}
+              sum={sum}
+              onCancelOrder={onCancelOrder}
+              onSaveOrder={onSaveOrder}
+            />
           </Col>
         </Row>
       </Container>
