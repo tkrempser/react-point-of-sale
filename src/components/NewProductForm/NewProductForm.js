@@ -14,19 +14,17 @@ const NewProductForm = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
 
-    if (enteredQuantity && singleSelections[0]) {
-      const productData = {
-        url: singleSelections[0].url,
-        name: singleSelections[0].name,
-        quantity: +enteredQuantity,
-        price: singleSelections[0].price,
-      };
+    const productData = {
+      url: singleSelections[0].url,
+      name: singleSelections[0].name,
+      quantity: +enteredQuantity,
+      price: singleSelections[0].price,
+    };
 
-      props.onAddProduct(productData);
+    props.onAddProduct(productData);
 
-      setSingleSelections([]);
-      setEnteredQuantity("");
-    }
+    setSingleSelections([]);
+    setEnteredQuantity("");
   };
 
   return (
@@ -34,7 +32,7 @@ const NewProductForm = (props) => {
       <Row className="mb-1">
         <Col md={8}>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label>Product name</Form.Label>
+            <Form.Label>Select a product</Form.Label>
             <Typeahead
               id="product-typeahead"
               labelKey="name"
@@ -42,6 +40,7 @@ const NewProductForm = (props) => {
               options={props.availableProducts}
               placeholder="Product name"
               selected={singleSelections}
+              inputProps={{ required: true }}
             />
           </Form.Group>
         </Col>
@@ -54,6 +53,7 @@ const NewProductForm = (props) => {
               min="1"
               onChange={quantityChangeHandler}
               value={enteredQuantity}
+              required
             />
           </Form.Group>
         </Col>
