@@ -12,6 +12,7 @@ const App = () => {
   const [customers, setCustomers] = useState([]);
   const [sellers, setSellers] = useState([]);
   const [orderProducts, setOrderProducts] = useState([]);
+  const [sum, setSum] = useState(0);
 
   useEffect(() => {
     fetch("http://127.0.0.1:8001/products.json")
@@ -44,6 +45,11 @@ const App = () => {
 
       return [addedProduct, ...prevOrderProducts];
     });
+
+    setSum((prevSum) => {
+      const sum = prevSum + addedProduct.quantity * addedProduct.price;
+      return sum;
+    });
   };
 
   return (
@@ -75,11 +81,7 @@ const App = () => {
 
           <Col md={4} className="pt-4 pt-md-1 ps-md-4">
             <h3 className="mb-3">Order detail</h3>
-            <OrderDetail
-              customers={customers}
-              sellers={sellers}
-              orderProducts={orderProducts}
-            />
+            <OrderDetail customers={customers} sellers={sellers} sum={sum} />
           </Col>
         </Row>
       </Container>

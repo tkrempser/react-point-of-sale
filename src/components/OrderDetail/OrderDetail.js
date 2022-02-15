@@ -2,11 +2,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Form, Button } from "react-bootstrap";
 
 const OrderDetail = (props) => {
-  let sum = 0;
-  for (let product of props.orderProducts) {
-    sum += product.quantity * product.price;
-  }
-
   return (
     <Form>
       <Form.Group className="mb-3" controlId="orderForm.CustomerSelect">
@@ -35,7 +30,7 @@ const OrderDetail = (props) => {
         <div className="card-body d-flex">
           <div className="lead align-self-center">Order total</div>
           <div className="h3 mb-0 ms-auto">
-            $ <span>{sum.toFixed(2)}</span>
+            $ <span>{props.sum.toFixed(2)}</span>
           </div>
         </div>
       </div>
