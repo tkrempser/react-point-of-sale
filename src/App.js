@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col, Navbar, Form, Button } from "react-bootstrap";
 
@@ -6,26 +6,25 @@ import logo from "./logo.svg";
 import ProductsList from "./components/ProductsList/ProductsList";
 import NewProductForm from "./components/NewProductForm/NewProductForm";
 
-const DUMMY_PRODUCTS = [
-  {
-    url: "http://127.0.0.1:8001/products/1/",
-    name: "Pro Gaming Headset",
-    quantity: 1,
-    price: 49.9,
-    commission: 0.05,
-  },
-  {
-    url: "http://127.0.0.1:8001/products/2/",
-    name: "Red Fashion Style Headphones",
-    quantity: 2,
-    price: 99.9,
-    commission: 0.03,
-  },
-];
-
 const App = () => {
-  const [availableProducts] = useState(DUMMY_PRODUCTS);
+  const [availableProducts, setAvailableProducts] = useState([]);
+  const [customers, setCustomers] = useState([]);
+  const [sellers, setSellers] = useState([]);
   const [orderProducts, setOrderProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:8001/products.json")
+      .then((response) => response.json())
+      .then((data) => setAvailableProducts(data.results));
+
+    fetch("http://127.0.0.1:8001/customers.json")
+      .then((response) => response.json())
+      .then((data) => setCustomers(data.results));
+
+    fetch("http://127.0.0.1:8001/users.json")
+      .then((response) => response.json())
+      .then((data) => setSellers(data.results));
+  }, []);
 
   const addProductHandler = (addedProduct) => {
     setOrderProducts((prevOrderProducts) => {
@@ -51,7 +50,7 @@ const App = () => {
     <>
       <Navbar bg="dark" variant="dark" className="mb-4">
         <Container>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="/">
             <img
               alt="React Point of Sale"
               src={logo}
