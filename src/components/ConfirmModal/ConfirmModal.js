@@ -5,19 +5,19 @@ const ConfirmModal = (props) => {
   return (
     <Modal
       show={props.show}
-      onHide={props.closeModalHandler}
+      onHide={props.onCloseModalHandler}
       backdrop="static"
       keyboard={false}
     >
       <Modal.Header closeButton>
-        <Modal.Title>Modal title</Modal.Title>
+        <Modal.Title>{props.modalTitle}</Modal.Title>
       </Modal.Header>
       <Modal.Body>{props.modalMessage}</Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={props.closeModalHandler}>
+        <Button variant="secondary" onClick={props.onCloseModalHandler}>
           No
         </Button>
-        <Button variant="primary" onClick={props.confirmHandler}>
+        <Button variant="primary" onClick={props.onConfirmHandler}>
           Yes
         </Button>
       </Modal.Footer>
