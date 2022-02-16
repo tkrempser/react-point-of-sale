@@ -24,7 +24,7 @@ const App = () => {
       .then((response) => response.json())
       .then((data) => setAvailableProducts(data.results));
 
-    fetch(`${API_ENDPOINT}//customers.json`)
+    fetch(`${API_ENDPOINT}/customers.json`)
       .then((response) => response.json())
       .then((data) => setCustomers(data.results));
 
