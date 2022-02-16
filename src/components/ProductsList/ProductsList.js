@@ -6,8 +6,8 @@ const ProductsList = (props) => {
     return <div className="h5 text-muted">No products added yet.</div>;
   }
 
-  const removeHandler = (url) => {
-    props.onRemoveProduct(url);
+  const removeHandler = (product) => {
+    props.onRemoveProduct(product);
   };
 
   return (
@@ -31,7 +31,7 @@ const ProductsList = (props) => {
                 <td>${product.price.toFixed(2)}</td>
                 <td>${(product.quantity * product.price).toFixed(2)}</td>
                 <td>
-                  <CloseButton onClick={() => removeHandler(product.url)} />
+                  <CloseButton onClick={() => removeHandler(product)} />
                 </td>
               </tr>
             ))}

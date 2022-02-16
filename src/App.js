@@ -57,12 +57,17 @@ const App = () => {
     });
   };
 
-  const removeProductHandler = (removedProductUrl) => {
+  const removeProductHandler = (removedProduct) => {
     const newOrderProducts = orderProducts.filter(
-      (product) => product.url !== removedProductUrl
+      (product) => product.url !== removedProduct.url
     );
 
     setOrderProducts(newOrderProducts);
+
+    setSum((prevSum) => {
+      const sum = prevSum - removedProduct.quantity * removedProduct.price;
+      return sum;
+    });
   };
 
   const cancelOrderHandler = () => {
@@ -81,7 +86,6 @@ const App = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         newOrder = data;
 
         orderProducts.forEach((product) => {
@@ -95,9 +99,7 @@ const App = () => {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(orderProductData),
-          })
-            .then((response) => response.json())
-            .then((data) => console.log(data));
+          });
         });
       });
 
