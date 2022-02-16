@@ -35,9 +35,6 @@ const OrderDetail = (props) => {
   };
 
   const cancelHandler = () => {
-    customerRef.current.value = "";
-    sellerRef.current.value = "";
-
     props.onCancelOrder();
     setShowCancelModal(false);
   };
@@ -91,16 +88,18 @@ const OrderDetail = (props) => {
       </Form>
 
       <ConfirmModal
-        modalMessage="Are you sure you want to clear all data?"
+        modalTitle="Cancel order"
+        modalMessage="Do you really want to clear all data?"
         show={showCancelModal}
-        closeModalHandler={closeCancelModalHandler}
-        confirmHandler={cancelHandler}
+        onCloseModalHandler={closeCancelModalHandler}
+        onConfirmHandler={cancelHandler}
       />
       <ConfirmModal
-        modalMessage="Do you want to save the order?"
+        modalTitle="Save order"
+        modalMessage="Do you really want to save the order?"
         show={showSaveModal}
-        closeModalHandler={closeSaveModalHandler}
-        confirmHandler={saveHandler}
+        onCloseModalHandler={closeSaveModalHandler}
+        onConfirmHandler={saveHandler}
       />
     </>
   );
