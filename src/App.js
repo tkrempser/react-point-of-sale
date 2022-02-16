@@ -106,6 +106,7 @@ const App = () => {
       });
 
     setOrderProducts([]);
+    setSum(0);
 
     setSaveShowAlert(true);
   };
