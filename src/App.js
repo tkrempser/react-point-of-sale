@@ -105,6 +105,8 @@ const App = () => {
         });
       });
 
+    setOrderProducts([]);
+
     setSaveShowAlert(true);
   };
 
