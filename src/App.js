@@ -8,6 +8,8 @@ import NewProductForm from "./components/NewProductForm/NewProductForm";
 import OrderDetail from "./components/OrderDetail/OrderDetail";
 import MessageAlert from "./components/MessageAlert/MessageAlert";
 
+const API_ENDPOINT = "https://pos.krempser.com.br/";
+
 const App = () => {
   const [availableProducts, setAvailableProducts] = useState([]);
   const [customers, setCustomers] = useState([]);
@@ -18,15 +20,15 @@ const App = () => {
   const [showSaveAlert, setSaveShowAlert] = useState(false);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8001/products.json")
+    fetch(`${API_ENDPOINT}/products.json`)
       .then((response) => response.json())
       .then((data) => setAvailableProducts(data.results));
 
-    fetch("http://127.0.0.1:8001/customers.json")
+    fetch(`${API_ENDPOINT}//customers.json`)
       .then((response) => response.json())
       .then((data) => setCustomers(data.results));
 
-    fetch("http://127.0.0.1:8001/users.json")
+    fetch(`${API_ENDPOINT}/users.json`)
       .then((response) => response.json())
       .then((data) => setSellers(data.results));
   }, []);
@@ -79,7 +81,7 @@ const App = () => {
   const saveOrderHandler = (orderData) => {
     let newOrder = {};
 
-    fetch("http://127.0.0.1:8001/orders.json", {
+    fetch(`${API_ENDPOINT}/orders.json`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(orderData),
@@ -95,7 +97,7 @@ const App = () => {
             quantity: product.quantity,
           };
 
-          fetch("http://127.0.0.1:8001/order-products.json", {
+          fetch(`${API_ENDPOINT}/order-products.json`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(orderProductData),
