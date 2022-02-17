@@ -123,7 +123,7 @@ const App = () => {
     <>
       <Navbar bg="dark" variant="dark" className="mb-3">
         <Container>
-          <Navbar.Brand href="/">
+          <Navbar.Brand>
             <img
               alt="React Point of Sale"
               src={logo}
