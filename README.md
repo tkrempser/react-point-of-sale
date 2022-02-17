@@ -22,4 +22,4 @@ npm run deploy
 ```
 
 ## API endpoint:
-This project uses the API located on this endpoint: https://pos.krempser.com.br/. The source code of this backend is available in this repository https://github.com/tkrempser/point-of-sale.
+This project uses the API located on this endpoint: https://pos.krempser.com.br/. The source code of this backend is available in this repository: https://github.com/tkrempser/point-of-sale.
