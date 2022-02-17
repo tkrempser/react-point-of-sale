@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/react-point-of-sale/static/css/main.4f5ab146.css",
-    "main.js": "/react-point-of-sale/static/js/main.a7dfb602.js",
+    "main.js": "/react-point-of-sale/static/js/main.cc35a41c.js",
     "static/media/logo.svg": "/react-point-of-sale/static/media/logo.595742fdb665167007bb2c65e47e69fb.svg",
     "index.html": "/react-point-of-sale/index.html",
     "main.4f5ab146.css.map": "/react-point-of-sale/static/css/main.4f5ab146.css.map",
-    "main.a7dfb602.js.map": "/react-point-of-sale/static/js/main.a7dfb602.js.map"
+    "main.cc35a41c.js.map": "/react-point-of-sale/static/js/main.cc35a41c.js.map"
   },
   "entrypoints": [
     "static/css/main.4f5ab146.css",
-    "static/js/main.a7dfb602.js"
+    "static/js/main.cc35a41c.js"
   ]
 }
