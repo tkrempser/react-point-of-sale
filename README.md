@@ -1,7 +1,7 @@
 # react-point-of-sale
 
 ## Live demo
-React app https://tkrempser.github.io/react-point-of-sale/
+React app: https://tkrempser.github.io/react-point-of-sale/.
 
 ## Install dependencies
 To install project dependencies, run:
