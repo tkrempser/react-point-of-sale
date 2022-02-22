@@ -8,7 +8,7 @@ import NewProductForm from "./components/NewProductForm/NewProductForm";
 import OrderDetail from "./components/OrderDetail/OrderDetail";
 import MessageAlert from "./components/MessageAlert/MessageAlert";
 
-const API_ENDPOINT = "https://pos.krempser.com.br";
+const API_ENDPOINT = "http://127.0.0.1:8001";
 
 const App = () => {
   const [availableProducts, setAvailableProducts] = useState([]);
@@ -39,6 +39,11 @@ const App = () => {
         (product) => product.url === addedProduct.url
       );
 
+      setSum((prevSum) => {
+        const sum = prevSum + addedProduct.quantity * addedProduct.price;
+        return sum;
+      });
+
       if (existingProduct) {
         const newPrevOrderProducts = prevOrderProducts.filter(
           (product) => product !== existingProduct
@@ -51,11 +56,6 @@ const App = () => {
       }
 
       return [addedProduct, ...prevOrderProducts];
-    });
-
-    setSum((prevSum) => {
-      const sum = prevSum + addedProduct.quantity * addedProduct.price;
-      return sum;
     });
   };
 
