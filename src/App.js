@@ -8,7 +8,7 @@ import NewProductForm from "./components/NewProductForm/NewProductForm";
 import OrderDetail from "./components/OrderDetail/OrderDetail";
 import MessageAlert from "./components/MessageAlert/MessageAlert";
 
-const API_ENDPOINT = "https://pos.krempser.com.br";
+const API_ENDPOINT = "http://localhost:8000";
 
 const App = () => {
   const [availableProducts, setAvailableProducts] = useState([]);
